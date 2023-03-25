@@ -42,7 +42,7 @@ def predict(path):
     # Load the trained model
     activation = Activation.objects.last()
     if activation is None:
-        raise Exception("x cannot be negative")
+        raise Exception("No model is active")
     
     model_path = activation.model.file.path
     model = tf.keras.models.load_model(model_path)
@@ -52,8 +52,6 @@ def predict(path):
     class_names = ["MildDemented", "NonDemented", "VeryMildDemented"]
     predicted_class = class_names[np.argmax(predictions)]
     # Get the percentage of each label
-    percentage = {}
-    for i in range(len(class_names)):
-        percentage[class_names[i]] = round(float(predictions[0][i]) * 100, 2)
+    percentage = {class_names[i]: round(float(predictions[0][i]) * 100, 2) for i in range(len(class_names))}
 
-    return predicted_class, percentage
+    return percentage
