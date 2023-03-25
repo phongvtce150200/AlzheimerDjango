@@ -1,4 +1,7 @@
 *.hdf5
+*.h5
+meachine_learning_models/
+prediction_images/
 
 # Django #
 *.log
