@@ -5,15 +5,15 @@ from .models import PredictionModel, PredictionResult, PredictionResultItem
 class PredictionResultItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = PredictionResultItem
-        fields = "__all__"
+        fields = ["label", "percentage"]
 
 
 class PredictionResultSerializer(serializers.ModelSerializer):
-    items = PredictionResultItemSerializer(many=False, read_only=True)
+    items = PredictionResultItemSerializer(many=True, read_only=True)
 
     class Meta:
         model = PredictionResult
-        fields = "__all__"
+        fields = ["id", "items"]
 
 
 class PredictionModelSerializer(serializers.ModelSerializer):
@@ -21,4 +21,4 @@ class PredictionModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PredictionModel
-        fields = "__all__"
+        fields = ["id", "result"]
