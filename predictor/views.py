@@ -7,3 +7,7 @@ from .models import PredictionModel
 class PredictionModelViewSet(viewsets.ModelViewSet):
     queryset = PredictionModel.objects.all()
     serializer_class = PredictionModelSerializer
+
+    readonly_fields = ('result')
+
+

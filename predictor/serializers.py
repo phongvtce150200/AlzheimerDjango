@@ -9,18 +9,16 @@ class PredictionResultItemSerializer(serializers.ModelSerializer):
 
 
 class PredictionResultSerializer(serializers.ModelSerializer):
-    items = PredictionResultItemSerializer(many=True)
+    items = PredictionResultItemSerializer(many=False, read_only=True)
 
     class Meta:
         model = PredictionResult
         fields = "__all__"
-        read_only_fields = ["items"]
 
 
 class PredictionModelSerializer(serializers.ModelSerializer):
-    result = serializers.RelatedField()
+    result = PredictionResultSerializer(read_only=True)
 
     class Meta:
         model = PredictionModel
         fields = "__all__"
-        read_only_fields = ["result"]
