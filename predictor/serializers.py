@@ -3,6 +3,9 @@ from .models import PredictionModel
 
 
 class PredictionModelSerializer(serializers.ModelSerializer):
+    
+    
+    
     class Meta:
         model = PredictionModel
         fields = '__all__'

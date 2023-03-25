@@ -9,8 +9,10 @@ class MechineLearningModel(models.Model):
 
     upload_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self) -> str:
+        return f"{self.name} {self.acc} %"
+
 
 class Activation(models.Model):
     model = models.ForeignKey(to=MechineLearningModel, on_delete=models.CASCADE)
     active_at = models.DateTimeField(auto_now_add=True)
-
