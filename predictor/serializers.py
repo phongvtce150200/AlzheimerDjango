@@ -21,4 +21,4 @@ class PredictionModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PredictionModel
-        fields = ["id", "result"]
+        fields = ["id", "result", "image"]
